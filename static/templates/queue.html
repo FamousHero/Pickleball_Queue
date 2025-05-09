@@ -17,28 +17,25 @@
     Queue Page
     <div id="group-info">
         Your group: 
-        <div id="group-player1">
-            {{.AssignedGroup.Player1.Name}}
-        </div>
-        <div id="group-player2">
-            {{.AssignedGroup.Player2.Name}}
-        </div>
-        <div id="group-player3">
-            {{.AssignedGroup.Player3.Name}}
-        </div>
-        <div id="group-player4">
-            {{.AssignedGroup.Player4.Name}}
-        </div>
+        {{ range $player_indx, $player := .AssignedGroup.Players}}
+            <div id="player-{{inc $player_indx}}">
+                {{$player.Name}}
+            </div>
+        {{ end}}
     </div>
     <div id="current-queue">
         <br>
         <br>
         <br>
         Current Queue:
-        {{ range $indx, $val := .CurrentQueue}}
-            <div id="group-{{$indx}}">
-                Group-{{inc $indx}}: <br>
-                {{$val}}
+        {{ range $group_indx, $group := .CurrentQueue}}
+            <div id="group-{{$group_indx}}">
+                Group-{{inc $group_indx}}: <br>
+                {{ range $player_indx, $player := $group.Players}}
+                <div>
+                    Player {{inc $player_indx}}: {{$player}}
+                </div>
+                {{ end }}
             </div>
         {{end}}
     </div>
