@@ -20,8 +20,8 @@ type PlayerInfo struct {
 	SkillGroup string
 }
 type SignupPageData struct {
-	PlayerInfo   PlayerInfo
-	LocalPlayers []PlayerInfo
+	PlayerInfo   PlayerInfo   `json: "playerInfo"`
+	LocalPlayers []PlayerInfo `json: "localPlayers` // Current Players at that same location
 }
 
 var (
@@ -30,7 +30,12 @@ var (
 )
 
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "index",
+	p := r.URL.Path
+	if p == "/" {
+		p = "/index"
+	}
+	fmt.Println(p)
+	renderTemplate(w, p,
 		&SignupPageData{
 			PlayerInfo: PlayerInfo{
 				Name:       "Placeholder",
@@ -56,13 +61,13 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 		})
 }
 
-func renderTemplate(w http.ResponseWriter, tmpl string, spd *SignupPageData) {
-	t, err := template.ParseFiles(tmpl + ".html")
+func renderTemplate(w http.ResponseWriter, tmpl string, data any) {
+	t, err := template.ParseFiles("static/templates" + tmpl + ".html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = t.Execute(w, spd)
+	err = t.Execute(w, data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -70,6 +75,8 @@ func renderTemplate(w http.ResponseWriter, tmpl string, spd *SignupPageData) {
 
 func main() {
 	http.HandleFunc("/view/{location}", viewHandler)
+	http.HandleFunc("/queue", queueHandler)
+	http.HandleFunc("/admin", adminHandler)
 	http.HandleFunc("/{$}", defaultHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
