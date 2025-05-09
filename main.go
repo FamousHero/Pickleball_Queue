@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
-	"text/template"
 )
 
 /*
@@ -45,6 +45,10 @@ func defaultHandler(w http.ResponseWriter, r *http.Request) {
 		})
 }
 
+func defaultPostHandler(w http.ResponseWriter, r *http.Request) {
+	// when a form submission is received, parse the data and create
+	// player info from it and add time to localPlayers
+}
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	location := r.PathValue("location")
 	fmt.Println(location)
@@ -62,7 +66,12 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, data any) {
-	t, err := template.ParseFiles("static/templates" + tmpl + ".html")
+	funcMap := template.FuncMap{
+		"inc": func(i int) int {
+			return i + 1
+		},
+	}
+	t, err := template.New("queue.html").Funcs(funcMap).ParseFiles("static/templates" + tmpl + ".html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -74,6 +83,7 @@ func renderTemplate(w http.ResponseWriter, tmpl string, data any) {
 }
 
 func main() {
+
 	http.HandleFunc("/view/{location}", viewHandler)
 	http.HandleFunc("/queue", queueHandler)
 	http.HandleFunc("/admin", adminHandler)
