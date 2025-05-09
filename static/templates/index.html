@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickleball Queue</title>
+    <link rel="stylesheet" href="/main.css" type="text/css" >
+</head>
+<body>
+    <main class="content" id="content">
+        <div class="" id="welcome-text">
+            Hello!!!
+            <br>
+            On the way to the court? Want to grab a meal & know your spot? Avoid the wait & sign up online
+        </div>
+        <form action="" method="post">
+            <legend>Select your location: </legend>
+                <section id="location-section">
+                    <select name="location" id="location">
+                        <option value="Orange Grove">Orange Grove</option>
+                        <option value="Anaheim">Anaheim</option>
+                        <option value="Montebello">Montebello</option>
+                        <option value="Commerce">Commerce</option>
+                    </select>
+                </section>
+            <legend>Select your skill group: </legend>
+                <section id="skill-group-section">
+                    <select name="skill-group" id="skill-group">
+                        <option value="beginner">Beginner</option>
+                        <option value="beginner+">Beginner+</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="intermediate+">Intermediate+</option>
+                        <option value="challenger">Challenger</option>
+                    </select>
+                </section>
+            <section id="players-section">
+                <label for="name-1">Name: </label>
+                <input type="text" id="name" />
+                <button id="add-player">+</button>
+            </section>
+            <section>
+                <button type="submit" id="signup-submit-button">Submit</button>
+            </section>
+        </form>
+
+        <div id="testing-template-data">
+            PlayerInfo: {{.PlayerInfo}}
+        </div>
+
+        <a href="admin">admin page</a>
+        <a href="queue">queue page</a>
+        <!--
+            Description
+            Dropdown for city
+            Dropdown for skill group
+            text input field for name
+            + button for group queuing 
+        -->
+    </main>
+</body>
+</html>
