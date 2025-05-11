@@ -58,10 +58,11 @@
                 <div class="players">
                     {{ range $pi, $p:= $c.Group.Players}}
                     <div id="group{{inc $ci}}-player{{inc $pi}}">
-                        Player {{inc $pi}}: {{$p.Name}}
+                        {{$p.Name}}
                     </div>
                     {{ end }}
                 </div>
+                <img src="/static/assets/pickleball_court.png" class="pickleball-court-img" alt="Pickleball Court" >
         </div>
         {{end}}
     </div>
