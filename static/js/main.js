@@ -6,32 +6,33 @@ const playerSection = document.querySelector("#players-section")
 let playerSectionCount = 1
 const addPlayerButton = document.querySelector("#add-player")
 
+if (addPlayerButton){
+    addPlayerButton.addEventListener("click", ()=>{
+    
+        const newPlayerInfo = document.createElement("div")
+        const newNameLabel = document.createElement("label") 
+        const newNameInput = document.createElement("input")
 
-addPlayerButton.addEventListener("click", ()=>{
-   
-    const newPlayerInfo = document.createElement("div")
-    const newNameLabel = document.createElement("label") 
-    const newNameInput = document.createElement("input")
+        newPlayerInfo.classList.add("player-info")
 
-    newPlayerInfo.classList.add("player-info")
+        newNameLabel.setAttribute("for", "name-"+playerSectionCount)
+        newNameLabel.innerText = "Name: "
 
-    newNameLabel.setAttribute("for", "name-"+playerSectionCount)
-    newNameLabel.innerText = "Name: "
+        newNameInput.setAttribute("type", "text")
+        newNameInput.setAttribute("id", "name"+playerSectionCount)
+        newNameInput.setAttribute("name", "name"+playerSectionCount)
 
-    newNameInput.setAttribute("type", "text")
-    newNameInput.setAttribute("id", "name"+playerSectionCount)
-    newNameInput.setAttribute("name", "name"+playerSectionCount)
+        playerSectionCount += 1
 
-    playerSectionCount += 1
+        newPlayerInfo.appendChild(newNameLabel)
+        newPlayerInfo.appendChild(newNameInput)
+        playerSection.insertBefore(newPlayerInfo, addPlayerButton)
 
-    newPlayerInfo.appendChild(newNameLabel)
-    newPlayerInfo.appendChild(newNameInput)
-    playerSection.insertBefore(newPlayerInfo, addPlayerButton)
-
-    if (playerSectionCount >= 4){
-            addPlayerButton.disabled = true
-    }
-})
+        if (playerSectionCount >= 4){
+                addPlayerButton.disabled = true
+        }
+    })
+}
 
 console.log(activeCourtStartTimes)
 function parseStartTime(startTime){
