@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><!-- template location--> Queue</title>
     <link rel="stylesheet" href="/static/css/main.css" type="text/css" >
-
+    <script src="/static/js/main.js" type="module" defer></script>
 </head>
 <body>
     <!--
@@ -49,7 +49,7 @@
         {{ range $ci, $c := .ActiveCourts}}
             <div class="group" id="group-{{$ci}}">
                 <h3>Court-{{inc $ci}}: {{$c.Group.SkillLevel}}</h3>
-                <div>Start Time: {{$c.StartTime}}</div>
+                <div class="start-time">Time Elapsed: <span class="time">{{$c.StartTime}}</span></div>
                 <div class="players">
                     {{ range $pi, $p:= $c.Group.Players}}
                     <div id="group{{inc $ci}}-player{{inc $pi}}">
