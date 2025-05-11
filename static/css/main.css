@@ -73,3 +73,13 @@ td{
     right: 24px;
     bottom: 24px
 }
+
+@media(prefers-color-scheme: dark){
+    body{
+        background-color: black;
+        color: white;
+    }
+    th{
+        color: #000000;
+    }
+}
