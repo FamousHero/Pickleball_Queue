@@ -48,3 +48,28 @@ td{
     text-align: center;
     font-size: small;
 }
+
+.court{
+    position: relative;
+}
+
+.player:nth-child(1){
+    left: 24px;
+    top: 24px;
+    position: absolute;
+}
+.player:nth-child(2){
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+}
+.player:nth-child(3){
+    position: absolute;
+    right: 24px;
+    top: 24px;
+}
+.player:nth-child(4){
+    position: absolute;
+    right: 24px;
+    bottom: 24px
+}
