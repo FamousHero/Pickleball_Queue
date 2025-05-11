@@ -40,7 +40,9 @@ func queueHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "/queue",
 		&data.QueuePageData{
 			Player: data.PlayerInfo{
-				Name: "Test",
+				Name:       "Test",
+				Location:   "Modesto",
+				SkillGroup: "Beginner+",
 			},
 			AssignedGroup: data.GroupInfo{
 				Players: [4]data.PlayerInfo{
@@ -61,6 +63,7 @@ func queueHandler(w http.ResponseWriter, r *http.Request) {
 						Location: "Test Local",
 					},
 				},
+				SkillLevel: "Beginner+",
 			},
 			CurrentQueue: currentQueue, // []GroupInfo{},
 			ActiveCourts: activeCourts,

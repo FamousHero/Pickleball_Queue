@@ -33,6 +33,7 @@ var (
 // ///////////////////////////////////
 var currentQueue = []data.GroupInfo{
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Bob",
@@ -57,6 +58,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Marco",
@@ -81,6 +83,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Jamie",
@@ -105,6 +108,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Cristian",
@@ -129,6 +133,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Fernando",
@@ -153,6 +158,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Claudia",
@@ -177,6 +183,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Regina",
@@ -201,6 +208,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Harry",
@@ -225,6 +233,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Olgo",
@@ -249,6 +258,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		SkillLevel: "Beginner+",
 		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Rechi",

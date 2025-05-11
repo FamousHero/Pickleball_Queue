@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><!-- template location--> Queue</title>
+    <link rel="stylesheet" href="/static/css/main.css" type="text/css" >
+
 </head>
 <body>
     <!--
@@ -14,9 +16,10 @@
         list of active courts
         
     -->
-    Queue Page
+    <h1>Queue Page ({{.Player.Location}})</h1>
     <div id="group-info">
-        Your group: 
+        <p>Your group: </p>
+        <p>({{.AssignedGroup.SkillLevel}})</p>
         {{ range $player_indx, $player := .AssignedGroup.Players}}
             <div id="player-{{inc $player_indx}}">
                 {{$player.Name}}
@@ -27,16 +30,18 @@
         <br>
         <br>
         <br>
-        Current Queue:
+        <h2>Current Queue:</h2>
         {{ range $group_indx, $group := .CurrentQueue}}
-            <div id="group-{{$group_indx}}">
-                Group-{{inc $group_indx}}: <br>
-                {{ range $player_indx, $player := $group.Players}}
-                <div>
-                    Player {{inc $player_indx}}: {{$player}}
+            <div class="group" id="group-{{$group_indx}}">
+                <h3>Group-{{inc $group_indx}}: {{$group.SkillLevel}}</h3>
+                <div class="players">
+                    {{ range $player_indx, $player := $group.Players}}
+                    <div id="group{{inc $group_indx}}-player{{inc $player_indx}}">
+                        Player {{inc $player_indx}}: {{$player.Name}}
+                    </div>
+                    {{ end }}
                 </div>
-                {{ end }}
-            </div>
+        </div>
         {{end}}
     </div>
 </body>

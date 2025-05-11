@@ -4,7 +4,8 @@ html{
 
 *, *:before, *:after{
     box-sizing: inherit;
-    margin: 0;
+    margin: auto;
+    width: fit-content;
 }
 body{
     margin: auto;
@@ -13,4 +14,15 @@ body{
 
 #welcome-text{
     color: red;
+}
+
+.group-name{
+    font-size: large;
+}
+.group-name div{
+    font-size: medium;
+}
+
+.players>div{
+    margin: 0;
 }

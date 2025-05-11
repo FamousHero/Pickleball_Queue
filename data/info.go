@@ -9,8 +9,9 @@ type PlayerInfo struct {
 }
 
 type GroupInfo struct {
-	Players   [4]PlayerInfo
-	CreatedAt time.Time
+	Players    [4]PlayerInfo
+	SkillLevel string
+	CreatedAt  time.Time
 }
 
 type ActiveCourtsInfo struct {
