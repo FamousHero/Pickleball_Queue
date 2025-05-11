@@ -31,18 +31,23 @@
         <br>
         <br>
         <h2>Current Queue:</h2>
-        {{ range $gi, $g := .CurrentQueue}}
-            <div class="group" id="group-{{$gi}}">
-                <h3>Group-{{inc $gi}}: {{$g.SkillLevel}}</h3>
-                <div class="players">
+        <table>
+            {{ range $gi, $g := .CurrentQueue}}
+            <tr>
+                <th colspan="4" class="group" id="group-{{$gi}}">
+                    Group-{{inc $gi}}: {{$g.SkillLevel}}
+                </th>
+            </tr>
+            <tr class="players">
                     {{ range $pi, $p := $g.Players}}
-                    <div id="group{{inc $gi}}-player{{inc $pi}}">
-                        Player {{inc $pi}}: {{$p.Name}}
-                    </div>
+                    <td id="group{{inc $gi}}-player{{inc $pi}}">
+                        {{$p.Name}}
+                    </td>
                     {{ end }}
                 </div>
-        </div>
-        {{end}}
+            </tr>
+            {{end}}
+        </table>
     </div>
     <div id="active-courts">
         <h2>Active Courts: </h2>

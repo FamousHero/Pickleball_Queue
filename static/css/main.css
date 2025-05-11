@@ -19,6 +19,7 @@ body{
 #players-section{
     text-align: center;
 }
+
 .group-name{
     font-size: large;
 }
@@ -28,4 +29,19 @@ body{
 
 .players>div{
     margin: 0;
+}
+
+table{
+    border-collapse: collapse;
+    width: 60vw;
+}
+th{
+    border: 1px solid;
+    background-color: #e4e4e4;
+    padding: 2px;
+}
+td{
+    padding: 5px;
+    border: 1px solid;
+    text-align: center;
 }
