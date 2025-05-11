@@ -31,7 +31,7 @@ var activeCourts = []*data.ActiveCourtInfo{
 		StartTime: time.Now(),
 		Group: data.GroupInfo{
 			SkillLevel: "Intermediate",
-			Players: [4]data.PlayerInfo{
+			Players: [4]*data.PlayerInfo{
 				{
 					Name:       "Millie",
 					Location:   "Ohio",
@@ -63,17 +63,13 @@ var activeCourts = []*data.ActiveCourtInfo{
 var currentQueue = []data.GroupInfo{
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Bob",
 				Location:   "Modesto",
 				SkillGroup: "Beginner+",
 			},
-			{
-				Name:       "Lola",
-				Location:   "Modesto",
-				SkillGroup: "Beginner+",
-			},
+			nil,
 			{
 				Name:       "Michael",
 				Location:   "Modesto",
@@ -88,7 +84,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Marco",
 				Location:   "Modesto",
@@ -113,7 +109,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Jamie",
 				Location:   "Modesto",
@@ -138,7 +134,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Cristian",
 				Location:   "Modesto",
@@ -163,7 +159,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Fernando",
 				Location:   "Modesto",
@@ -188,7 +184,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Claudia",
 				Location:   "Modesto",
@@ -213,7 +209,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Regina",
 				Location:   "Modesto",
@@ -238,7 +234,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Harry",
 				Location:   "Modesto",
@@ -263,7 +259,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Olgo",
 				Location:   "Modesto",
@@ -288,7 +284,7 @@ var currentQueue = []data.GroupInfo{
 	},
 	{
 		SkillLevel: "Beginner+",
-		Players: [4]data.PlayerInfo{
+		Players: [4]*data.PlayerInfo{
 			{
 				Name:       "Rechi",
 				Location:   "Modesto",

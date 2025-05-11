@@ -45,7 +45,7 @@ func queueHandler(w http.ResponseWriter, r *http.Request) {
 				SkillGroup: "Beginner+",
 			},
 			AssignedGroup: data.GroupInfo{
-				Players: [4]data.PlayerInfo{
+				Players: [4]*data.PlayerInfo{
 					{
 						Name:     "Player1",
 						Location: "Test Local",

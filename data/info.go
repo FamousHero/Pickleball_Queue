@@ -9,7 +9,7 @@ type PlayerInfo struct {
 }
 
 type GroupInfo struct {
-	Players    [4]PlayerInfo
+	Players    [4]*PlayerInfo
 	SkillLevel string
 	CreatedAt  time.Time
 }
