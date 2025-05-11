@@ -1,34 +1,39 @@
 package main
 
 import (
-	"net/http"
-	"time"
+	"github.com/FamousHero/Pickleball_Queue/data"
 )
 
-type QueuePageData struct {
-	Player        PlayerInfo
-	AssignedGroup GroupInfo
-	CurrentQueue  []GroupInfo
-	ActiveCourts  ActiveCourtsInfo
+// Players should be made private, also set a createdAt field to know
+// which group is ahead of which
+
+// //////////////////////////////////
+// //////// Queue Imp ///////////////
+// //////////////////////////////////
+type Queue[T any] struct {
+	container []T
 }
 
-type GroupInfo struct {
-	Players [4]PlayerInfo
+func (q *Queue[T]) Push(x T) {
+	q.container = append(q.container, x)
 }
 
-type ActiveCourtsInfo struct {
-	Players   []GroupInfo
-	StartTime time.Time
+func (q *Queue[T]) Pop() T {
+	v := q.container[0]
+	q.container = q.container[1:]
+	return v
 }
 
 var (
-	activeCourts []ActiveCourtsInfo
+	activeCourts []data.ActiveCourtsInfo
 )
 
-// test data
-var currentQueue = []GroupInfo{
+// ///////////////////////////////////
+// ///////// test data ///////////////
+// ///////////////////////////////////
+var currentQueue = []data.GroupInfo{
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Bob",
 				Location:   "Modesto",
@@ -52,7 +57,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Marco",
 				Location:   "Modesto",
@@ -76,7 +81,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Jamie",
 				Location:   "Modesto",
@@ -100,7 +105,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Cristian",
 				Location:   "Modesto",
@@ -124,7 +129,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Fernando",
 				Location:   "Modesto",
@@ -148,7 +153,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Claudia",
 				Location:   "Modesto",
@@ -172,7 +177,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Regina",
 				Location:   "Modesto",
@@ -196,7 +201,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Harry",
 				Location:   "Modesto",
@@ -220,7 +225,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Olgo",
 				Location:   "Modesto",
@@ -244,7 +249,7 @@ var currentQueue = []GroupInfo{
 		},
 	},
 	{
-		Players: [4]PlayerInfo{
+		Players: [4]data.PlayerInfo{
 			{
 				Name:       "Rechi",
 				Location:   "Modesto",
@@ -267,36 +272,4 @@ var currentQueue = []GroupInfo{
 			},
 		},
 	},
-}
-
-func queueHandler(w http.ResponseWriter, r *http.Request) {
-
-	renderTemplate(w, "/queue",
-		&QueuePageData{
-			Player: PlayerInfo{
-				Name: "Test",
-			},
-			AssignedGroup: GroupInfo{
-				Players: [4]PlayerInfo{
-					{
-						Name:     "Player1",
-						Location: "Test Local",
-					},
-					{
-						Name:     "Player2",
-						Location: "Test Local",
-					},
-					{
-						Name:     "Player3",
-						Location: "Test Local",
-					},
-					{
-						Name:     "Player4",
-						Location: "Test Local",
-					},
-				},
-			},
-			CurrentQueue: currentQueue, // []GroupInfo{},
-			ActiveCourts: ActiveCourtsInfo{},
-		})
 }
