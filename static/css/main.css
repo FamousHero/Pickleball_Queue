@@ -2,6 +2,15 @@ html{
     box-sizing: border-box;
 }
 
+:root{
+    --bg-color-light: #ffffff;
+    --bg-color-dark: #000000;
+    --color-light: #000000;
+    --color-dark: #ffffff;
+    --bg-table-header: #e4e4e4;
+    --color-table-header: #000000; /* pretty sure this is bad */
+}
+
 *, *:before, *:after{
     box-sizing: inherit;
     margin: auto;
@@ -11,6 +20,8 @@ body{
     margin: auto;
     width: fit-content;
     text-align: center;
+    background-color: var(--bg-color-light);
+    color: var(--color-light);
 }
 
 #welcome-text{
@@ -39,7 +50,7 @@ table{
 }
 th{
     border: 1px solid;
-    background-color: #e4e4e4;
+    background-color: var(--bg-table-header);
     padding: 2px;
 }
 td{
@@ -76,10 +87,10 @@ td{
 
 @media(prefers-color-scheme: dark){
     body{
-        background-color: black;
-        color: white;
+        background-color: var(--bg-color-dark);
+        color: var(--color-dark);
     }
     th{
-        color: #000000;
+        color: var(--color-table-header);
     }
 }
