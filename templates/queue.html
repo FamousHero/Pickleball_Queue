@@ -20,9 +20,9 @@
     <div id="group-info">
         <p>Your group: </p>
         <p>({{.AssignedGroup.SkillLevel}})</p>
-        {{ range $player_indx, $player := .AssignedGroup.Players}}
-            <div id="player-{{inc $player_indx}}">
-                {{$player.Name}}
+        {{ range $pi, $p := .AssignedGroup.Players}}
+            <div id="player-{{inc $pi}}">
+                {{$p.Name}}
             </div>
         {{ end}}
     </div>
@@ -31,13 +31,29 @@
         <br>
         <br>
         <h2>Current Queue:</h2>
-        {{ range $group_indx, $group := .CurrentQueue}}
-            <div class="group" id="group-{{$group_indx}}">
-                <h3>Group-{{inc $group_indx}}: {{$group.SkillLevel}}</h3>
+        {{ range $gi, $g := .CurrentQueue}}
+            <div class="group" id="group-{{$gi}}">
+                <h3>Group-{{inc $gi}}: {{$g.SkillLevel}}</h3>
                 <div class="players">
-                    {{ range $player_indx, $player := $group.Players}}
-                    <div id="group{{inc $group_indx}}-player{{inc $player_indx}}">
-                        Player {{inc $player_indx}}: {{$player.Name}}
+                    {{ range $pi, $p := $g.Players}}
+                    <div id="group{{inc $gi}}-player{{inc $pi}}">
+                        Player {{inc $pi}}: {{$p.Name}}
+                    </div>
+                    {{ end }}
+                </div>
+        </div>
+        {{end}}
+    </div>
+    <div id="active-courts">
+        <h2>Active Courts: </h2>
+        {{ range $ci, $c := .ActiveCourts}}
+            <div class="group" id="group-{{$ci}}">
+                <h3>Court-{{inc $ci}}: {{$c.Group.SkillLevel}}</h3>
+                <div>Start Time: {{$c.StartTime}}</div>
+                <div class="players">
+                    {{ range $pi, $p:= $c.Group.Players}}
+                    <div id="group{{inc $ci}}-player{{inc $pi}}">
+                        Player {{inc $pi}}: {{$p.Name}}
                     </div>
                     {{ end }}
                 </div>

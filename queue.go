@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"github.com/FamousHero/Pickleball_Queue/data"
 )
 
@@ -24,9 +26,36 @@ func (q *Queue[T]) Pop() T {
 	return v
 }
 
-var (
-	activeCourts []data.ActiveCourtsInfo
-)
+var activeCourts = []*data.ActiveCourtInfo{
+	{
+		StartTime: time.Now(),
+		Group: data.GroupInfo{
+			SkillLevel: "Intermediate",
+			Players: [4]data.PlayerInfo{
+				{
+					Name:       "Millie",
+					Location:   "Ohio",
+					SkillGroup: "Intermediate",
+				},
+				{
+					Name:       "Bobby",
+					Location:   "Ohio",
+					SkillGroup: "Intermediate",
+				},
+				{
+					Name:       "Brown",
+					Location:   "Ohio",
+					SkillGroup: "Intermediate",
+				},
+				{
+					Name:       "Junior",
+					Location:   "Ohio",
+					SkillGroup: "Intermediate",
+				},
+			},
+		},
+	},
+}
 
 // ///////////////////////////////////
 // ///////// test data ///////////////

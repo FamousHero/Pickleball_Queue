@@ -14,7 +14,7 @@ type GroupInfo struct {
 	CreatedAt  time.Time
 }
 
-type ActiveCourtsInfo struct {
-	Players   []GroupInfo
+type ActiveCourtInfo struct {
+	Group     GroupInfo
 	StartTime time.Time
 }

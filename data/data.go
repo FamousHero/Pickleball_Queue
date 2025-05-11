@@ -8,8 +8,8 @@ type SignupPageData struct {
 type QueuePageData struct {
 	Player        PlayerInfo
 	AssignedGroup GroupInfo
-	CurrentQueue  []GroupInfo // Change to Queue[GroupInfo]
-	ActiveCourts  []ActiveCourtsInfo
+	CurrentQueue  []GroupInfo        // Change to Queue[GroupInfo]
+	ActiveCourts  []*ActiveCourtInfo // If nobody on a court, set that court to nil
 }
 
 type AdminPageData struct {
