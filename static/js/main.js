@@ -83,6 +83,10 @@ function setupCourts(){
     }, 1000)
 }
 
+// Send notification game is done, update UI to ask "rematch" or "new court"
+function onFinish(){
+
+}
 var path = window.location.pathname
 console.log(path)
 switch(true){

@@ -1,0 +1,32 @@
+connect to sql db 
+set up db tables
+rematch functionality (front-end resends group data)
+redirect to sign-up for new game (user can change skill-level)
+admin functionality >_< (tbd)
+switch to websockets for real-time court updates
+donate page
+contact page
+style signup-form
+style locations
+add bg-image to index.html
+ready check when open court & group is up
+estimated queue time (based of queue position, avg game length, & activeCourt[myQueuePos])
+remove group from queue when all ready
+fill court when all ready
+Allow player to fill open spot in group
+notify later group if open spot available
+
+
+Note:
+Leave group only removes 1 person even though you can sign up multiple.
+Should you be able to remove anyone you signed up or remove entire sign up group.
+
+Allow admins to update a courts current score? --No. Players warm up & hard to tell. 
+Also players can't update score mid-game. 
+
+Allow Users to change/decide group name. If so, display group-name-1 vs group-name-2 on /playing
+
+Profanity check??? :shrug:
+
+
+

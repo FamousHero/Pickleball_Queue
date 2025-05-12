@@ -9,5 +9,9 @@
 </head>
 <body>
     {{template "court" .}}
+    <form action="/game-over" method="post">
+        <input type="hidden" name="group-id" value="{{.Group.GroupId}}">
+        <button id="finish-btn">Finished</button>
+    </form>
 </body>
 </html>
