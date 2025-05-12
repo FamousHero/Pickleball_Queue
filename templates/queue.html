@@ -50,7 +50,7 @@
         <table>
             {{ range $gi, $g := .CurrentQueue}}
             <tr>
-                <th colspan="4" class="group {{if eq $g $.AssignedGroup}}my-group{{end}}" id="group-{{$gi}}">
+                <th colspan="4" class="group {{if and (eq $g $.AssignedGroup) $.Player}}my-group{{end}}" id="group-{{$gi}}">
                     Group-{{inc $gi}}: {{$g.SkillLevel}}
                 </th>
             </tr>
