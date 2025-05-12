@@ -1,0 +1,25 @@
+{{define "queue-table"}}
+    <table>
+        {{ range $gi, $g := .CurrentQueue}}
+        <tr>
+            <th colspan="4" class="group {{if and (eq $g $.AssignedGroup) $.Player}}my-group{{end}}" id="group-{{$gi}}">
+                Group-{{inc $gi}}: {{$g.SkillLevel}}
+            </th>
+        </tr>
+        <tr class="players">
+                {{ range $pi, $p := $g.Players}}
+                    {{if $p}}
+                    <td id="group{{inc $gi}}-player{{inc $pi}}">
+                        {{$p.Name}}
+                    </td>
+                    {{else}}
+                    <td id="group{{inc $gi}}-player{{inc $pi}}" class="open-spot">
+                        Open
+                    </td>
+                    {{end}}
+                {{ end }}
+            </div>
+        </tr>
+        {{end}}
+    </table>
+{{end}}
