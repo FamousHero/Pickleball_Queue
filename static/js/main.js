@@ -59,11 +59,11 @@ function setupSignUp(){
     addPlayerButton.addEventListener("click", onAddPlayer)
 }  
 
-function setupQueue(){
+function setupCourts(){
 
-    var activeCourtStartTimes = document.querySelectorAll("#active-courts>.group>.start-time>.time")
-    
-    activeCourtStartTimes.forEach((startTime)=>{
+    var CourtStartTimes = document.querySelectorAll(".court-info>.start-time>.time")
+    console.log(CourtStartTimes)
+    CourtStartTimes.forEach((startTime)=>{
         console.log(parseStartTime(startTime.innerHTML))
         let time = new Date(parseStartTime(startTime.innerHTML))
         console.log("Hello World")
@@ -77,19 +77,20 @@ function setupQueue(){
     });
     
     setInterval(()=>{
-        activeCourtStartTimes.forEach((startTime)=>{
+        CourtStartTimes.forEach((startTime)=>{
             startTime.innerHTML = formatElapsedTime(startTime.innerHTML)
         })
     }, 1000)
 }
 
 var path = window.location.pathname
+console.log(path)
 switch(true){
     case /^\/$/.test(path):
         setupSignUp()
         break
     case /^\/queue\/[a-zA-Z\-]+\/?$/.test(path):
-
-        setupQueue()
+    case /^\/playing$/.test(path):
+        setupCourts()
         break
 }

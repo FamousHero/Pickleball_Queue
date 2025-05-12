@@ -36,6 +36,7 @@ func main() {
 
 	http.HandleFunc("/view/{location}", viewHandler)
 	http.HandleFunc("/queue/{location}", queueHandler)
+	http.HandleFunc("/playing", playingHandler)
 	http.HandleFunc("/admin", adminHandler)
 	http.HandleFunc("/{$}", defaultHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))

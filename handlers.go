@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/FamousHero/Pickleball_Queue/data"
 )
@@ -13,6 +14,13 @@ func adminHandler(w http.ResponseWriter, r *http.Request) {
 
 func cssHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "static/css"+r.URL.Path)
+}
+
+func playingHandler(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "/playing", data.ActiveCourtInfo{
+		Group:     *assignGroup,
+		StartTime: time.Now(),
+	})
 }
 
 func defaultHandler(w http.ResponseWriter, r *http.Request) {

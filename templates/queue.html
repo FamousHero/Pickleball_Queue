@@ -74,7 +74,7 @@
     <div id="active-courts">
         <h2>Active Courts: </h2>
         {{ range $ci, $c := .ActiveCourts}}
-            <div class="group" id="group-{{$ci}}">
+            <div class="court-info" id="group-{{$ci}}">
                 <h3>Court-{{inc $ci}}: {{$c.Group.SkillLevel}}</h3>
                 <div class="start-time">Time Elapsed: <span class="time">{{$c.StartTime}}</span></div>
                 <div class="court">
