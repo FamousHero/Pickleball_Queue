@@ -37,6 +37,12 @@ body{
 #players-section{
     text-align: center;
 }
+#leave-group-btn{
+    margin: 8px auto;
+    padding: 4px;
+    background-color: red;
+    color: white;
+}
 
 .group-name{
     font-size: large;

@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"slices"
 
 	"github.com/FamousHero/Pickleball_Queue/data"
 )
@@ -24,7 +23,7 @@ func defaultHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(p)
 	renderTemplate(w, p,
 		&data.SignupPageData{
-			PlayerInfo: data.PlayerInfo{
+			PlayerInfo: &data.PlayerInfo{
 				Name:       "Placeholder",
 				Location:   "unknown",
 				SkillGroup: "beginner",
@@ -42,42 +41,51 @@ func changeGroupHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func leaveGroupHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		err := r.ParseForm()
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
 
+		pIdStr := r.FormValue("player-id")
+		pId, err := validateArrayIndexFromForm(pIdStr, len(players))
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		player = nil
+
+		gIdStr := r.FormValue("group-id")
+		gId, err := validateArrayIndexFromForm(gIdStr, len(currentQueue))
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		currentQueue[gId].Players[pId] = nil
+		delete(players, pId)
+		fmt.Println("Player is ", player)
+
+		fmt.Println(len(currentQueue))
+		fmt.Println(player)
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+	}
 }
 
 func queueHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("calling queueHandler")
-	p := &data.PlayerInfo{
-		Name:       "Test",
-		Location:   "Modesto",
-		SkillGroup: "Beginner+",
-	}
 
-	ag := data.GroupInfo{
-		Players: [4]*data.PlayerInfo{
-			p,
-			{
-				Name:     "Player2",
-				Location: "Test Local",
-			},
-			{
-				Name:     "Player3",
-				Location: "Test Local",
-			},
-			{
-				Name:     "Player4",
-				Location: "Test Local",
-			},
-		},
-		SkillLevel: "Beginner+",
-	}
+	fmt.Println(currentQueue)
+	fmt.Println(player)
 
-	currentQueue = slices.Insert(currentQueue, len(currentQueue)-3, ag)
-
+	location := r.PathValue("location")
 	renderTemplate(w, "/queue",
 		&data.QueuePageData{
-			Player:        *p,
-			AssignedGroup: ag,
+			Location:      location,
+			Player:        player,
+			AssignedGroup: assignGroup,
 			CurrentQueue:  currentQueue, // []GroupInfo{},
 			ActiveCourts:  activeCourts,
 		})
@@ -94,7 +102,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	renderTemplate(w, "index",
 		&data.SignupPageData{
-			PlayerInfo:   data.PlayerInfo{},
+			PlayerInfo:   &data.PlayerInfo{},
 			LocalPlayers: localPlayers,
 		})
 }

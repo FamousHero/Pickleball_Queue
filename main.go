@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"slices"
 
 	"github.com/FamousHero/Pickleball_Queue/data"
 )
@@ -15,19 +16,26 @@ TODOS:
 */
 
 var (
-	players      = make(map[int]data.PlayerInfo)
-	locationInfo = make(map[string][]data.PlayerInfo)
+	players      = make(map[int]*data.PlayerInfo)
+	locationInfo = make(map[string][]*data.PlayerInfo)
 )
 
 func main() {
+	playerCount := 0
+	players[playerCount] = player
+	player.PlayerId = playerCount
+	playerCount++
+
+	assignGroup.GroupId = len(currentQueue) - 3
+	currentQueue = slices.Insert(currentQueue, assignGroup.GroupId, assignGroup)
 
 	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("static"))))
 
 	http.HandleFunc("POST /change-group", changeGroupHandler)
-	http.HandleFunc("DELETE /leave-group", leaveGroupHandler)
+	http.HandleFunc("POST /leave-group", leaveGroupHandler)
 
 	http.HandleFunc("/view/{location}", viewHandler)
-	http.HandleFunc("/queue", queueHandler)
+	http.HandleFunc("/queue/{location}", queueHandler)
 	http.HandleFunc("/admin", adminHandler)
 	http.HandleFunc("/{$}", defaultHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))

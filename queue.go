@@ -60,8 +60,9 @@ var activeCourts = []*data.ActiveCourtInfo{
 // ///////////////////////////////////
 // ///////// test data ///////////////
 // ///////////////////////////////////
-var currentQueue = []data.GroupInfo{
+var currentQueue = []*data.GroupInfo{
 	{
+		GroupId:    1,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -83,6 +84,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    2,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -108,6 +110,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    3,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -129,6 +132,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    4,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -150,6 +154,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    5,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -175,6 +180,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    6,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -200,6 +206,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    7,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -225,6 +232,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    8,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -250,6 +258,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    9,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -275,6 +284,7 @@ var currentQueue = []data.GroupInfo{
 		},
 	},
 	{
+		GroupId:    10,
 		SkillLevel: "Beginner+",
 		Players: [4]*data.PlayerInfo{
 			{
@@ -299,4 +309,31 @@ var currentQueue = []data.GroupInfo{
 			},
 		},
 	},
+}
+
+var player = &data.PlayerInfo{
+	PlayerId:   -1, // Testing only, should be non-negative
+	Name:       "Test",
+	Location:   "Modesto",
+	SkillGroup: "Beginner+",
+}
+
+var assignGroup = &data.GroupInfo{
+	GroupId: -1,
+	Players: [4]*data.PlayerInfo{
+		player,
+		{
+			Name:     "Player2",
+			Location: "Test Local",
+		},
+		{
+			Name:     "Player3",
+			Location: "Test Local",
+		},
+		{
+			Name:     "Player4",
+			Location: "Test Local",
+		},
+	},
+	SkillLevel: "Beginner+",
 }

@@ -84,11 +84,12 @@ function setupQueue(){
 }
 
 var path = window.location.pathname
-switch(path){
-    case "/":
+switch(true){
+    case /^\/$/.test(path):
         setupSignUp()
         break
-    case "/queue":
+    case /^\/queue\/[a-zA-Z\-]+\/?$/.test(path):
+
         setupQueue()
         break
 }
