@@ -15,7 +15,8 @@ func renderTemplate(w http.ResponseWriter, tmpl string, data any) {
 			return strings.Replace(loc, " ", "-", -1)
 		},
 	}
-	t, err := template.New(tmpl[1:] + ".html").Funcs(funcMap).ParseFiles("templates" + tmpl + ".html")
+
+	t, err := template.New(tmpl[1:] + ".html").Funcs(funcMap).ParseGlob("templates/*.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

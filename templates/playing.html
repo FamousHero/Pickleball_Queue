@@ -8,21 +8,6 @@
     <script src="/static/js/main.js" type="module" defer></script>
 </head>
 <body>
-    <div class="court-info">
-        <h3>Court-{{inc .Group.GroupId}}: {{.Group.SkillLevel}}</h3>
-        <div class="start-time">Time Elapsed: <span class="time">{{.StartTime}}</span></div>
-        <div class="court">
-            <div class="players">
-                {{ range $pi, $p:= $.Group.Players}} <!-- Can be nil if 2p court-->
-                    {{ if $p}}
-                    <div class="player" id="group-player{{inc $pi}}">
-                        {{$p.Name}}
-                    </div>
-                    {{end}}
-                {{ end }}
-            </div>
-            <img src="/static/assets/pickleball_court.png" class="pickleball-court-img" alt="Pickleball Court" >
-        </div>       
-    </div>
+    {{template "court" .}}
 </body>
 </html>
