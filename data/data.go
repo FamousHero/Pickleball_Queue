@@ -1,6 +1,7 @@
 package data
 
 type SignupPageData struct {
+	Locations    []string
 	PlayerInfo   *PlayerInfo   `json: "playerInfo"`
 	LocalPlayers []*PlayerInfo `json: "localPlayers` // Current Players at that same location
 }
