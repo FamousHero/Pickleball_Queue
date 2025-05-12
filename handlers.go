@@ -37,19 +37,17 @@ func defaultPostHandler(w http.ResponseWriter, r *http.Request) {
 }
 func queueHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("calling queueHandler")
+	player := &data.PlayerInfo{
+		Name:       "Test",
+		Location:   "Modesto",
+		SkillGroup: "Beginner+",
+	}
 	renderTemplate(w, "/queue",
 		&data.QueuePageData{
-			Player: data.PlayerInfo{
-				Name:       "Test",
-				Location:   "Modesto",
-				SkillGroup: "Beginner+",
-			},
+			Player: *player,
 			AssignedGroup: data.GroupInfo{
 				Players: [4]*data.PlayerInfo{
-					{
-						Name:     "Player1",
-						Location: "Test Local",
-					},
+					player,
 					{
 						Name:     "Player2",
 						Location: "Test Local",
