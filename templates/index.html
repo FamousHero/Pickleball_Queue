@@ -17,10 +17,9 @@
             <legend>Select your location: </legend>
                 <section id="location-section">
                     <select name="location" id="location">
-                        <option value="Orange Grove">Orange Grove</option>
-                        <option value="Anaheim">Anaheim</option>
-                        <option value="Montebello">Montebello</option>
-                        <option value="Commerce">Commerce</option>
+                        {{range $idx, $loc := .Locations}}
+                            <option value="{{concatLocation $loc}}">{{$loc}}</option>
+                        {{end}}
                     </select>
                 </section>
             <legend>Select your skill group: </legend>

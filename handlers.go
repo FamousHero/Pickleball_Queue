@@ -29,6 +29,10 @@ func defaultHandler(w http.ResponseWriter, r *http.Request) {
 				SkillGroup: "beginner",
 			},
 			Locations: []string{
+				"Orange Grove",
+				"Anaheim",
+				"Montebello",
+				"Commerce",
 				"Modesto",
 				"Santa Ana",
 				"Simi Valley",
