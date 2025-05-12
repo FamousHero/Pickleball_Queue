@@ -9,6 +9,11 @@ html{
     --color-dark: #ffffff;
     --bg-table-header: #e4e4e4;
     --color-table-header: #000000; /* pretty sure this is bad */
+    --color-link: #0580e6;
+    --color-hover: #dc00f0;
+
+    --bg-color-theme: var(--bg-color-light);
+    --color-theme: var(--color-light);
 }
 
 *, *:before, *:after{
@@ -20,8 +25,8 @@ body{
     margin: auto;
     width: fit-content;
     text-align: center;
-    background-color: var(--bg-color-light);
-    color: var(--color-light);
+    background-color: var(--bg-color-theme);
+    color: var(--color-theme);
 }
 
 #welcome-text{
@@ -49,13 +54,13 @@ table{
     min-width: 300px;
 }
 th{
-    border: 1px solid;
+    border: 1px solid var(--color-theme);
     background-color: var(--bg-table-header);
     padding: 2px;
 }
 td{
     padding: 5px;
-    border: 1px solid;
+    border: 1px solid var(--color-theme);
     text-align: center;
     font-size: small;
 }
@@ -85,10 +90,17 @@ td{
     bottom: 24px
 }
 
+.open-spot{
+    color: var(--color-link)
+}
+
+.open-spot:hover, .open-spot:active{
+    color: var(--color-hover);
+}
 @media(prefers-color-scheme: dark){
-    body{
-        background-color: var(--bg-color-dark);
-        color: var(--color-dark);
+    :root{
+        --color-theme: var(--color-dark);
+        --bg-color-theme: var(--color-light);
     }
     th{
         color: var(--color-table-header);
