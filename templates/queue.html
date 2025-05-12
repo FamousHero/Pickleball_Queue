@@ -19,14 +19,21 @@
     <h1>Queue Page ({{.Player.Location}})</h1>
     <div id="group-info">
         <p>Your group: </p>
-        <p>({{.AssignedGroup.SkillLevel}})</p>
-        {{ range $pi, $p := .AssignedGroup.Players}}
-            {{if $p}}
-                <div id="player-{{inc $pi}}">
-                    {{$p.Name}}
-                </div>
-            {{ end}}
-        {{ end}}
+        <table>
+            <tr>
+                <th colspan="4" class="group">{{.AssignedGroup.SkillLevel}}</th>
+            </tr>
+            <tr>
+                <td id="my-name">{{.Player.Name}}</td>
+                {{ range $pi, $p := .AssignedGroup.Players}}
+                    {{if and $p (ne $p.Name $.Player.Name)}}
+                        <td id="my-group-p{{inc $pi}}">
+                            {{$p.Name}}
+                        </td>
+                    {{ end}}
+                {{ end}}
+            </tr>
+        </table>
     </div>
     <div id="current-queue">
         <br>
