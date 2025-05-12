@@ -50,7 +50,10 @@
         </div>
 
         <a href="admin">admin page</a>
-        <a href="queue">queue page</a>
+        <p>Check out a Location!</p>
+        {{range $idx, $loc := .Locations}}
+            <div class="link location"><a href="queue/{{concatLocation $loc}}">{{$loc}}</a></div>
+        {{end}}
         <!--
             Description
             Dropdown for city
