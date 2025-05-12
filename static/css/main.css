@@ -11,6 +11,7 @@ html{
     --color-table-header: #000000; /* pretty sure this is bad */
     --color-link: #0580e6;
     --color-hover: #dc00f0;
+    --bg-color-highlight: #ffd700;
 
     --bg-color-theme: var(--bg-color-light);
     --color-theme: var(--color-light);
@@ -88,6 +89,9 @@ td{
     position: absolute;
     right: 24px;
     bottom: 24px
+}
+.my-group{
+    background-color: var(--bg-color-highlight);
 }
 
 .open-spot{
