@@ -37,6 +37,14 @@ func defaultPostHandler(w http.ResponseWriter, r *http.Request) {
 	// player info from it and add time to localPlayers
 }
 
+func changeGroupHandler(w http.ResponseWriter, r *http.Request) {
+	// receive json with player_id, current_group_id, new_group_id
+}
+
+func leaveGroupHandler(w http.ResponseWriter, r *http.Request) {
+
+}
+
 func queueHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("calling queueHandler")
 	p := &data.PlayerInfo{

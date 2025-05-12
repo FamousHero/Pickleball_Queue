@@ -22,6 +22,10 @@ var (
 func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("static"))))
+
+	http.HandleFunc("POST /change-group", changeGroupHandler)
+	http.HandleFunc("DELETE /leave-group", leaveGroupHandler)
+
 	http.HandleFunc("/view/{location}", viewHandler)
 	http.HandleFunc("/queue", queueHandler)
 	http.HandleFunc("/admin", adminHandler)
