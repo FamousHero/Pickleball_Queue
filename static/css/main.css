@@ -25,6 +25,7 @@ html{
 body{
     margin: auto;
     width: fit-content;
+    font-size: 18px;
     text-align: center;
     background-color: var(--bg-color-theme);
     color: var(--color-theme);
