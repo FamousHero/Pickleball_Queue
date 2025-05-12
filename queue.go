@@ -120,11 +120,7 @@ var currentQueue = []data.GroupInfo{
 				Location:   "Modesto",
 				SkillGroup: "Beginner+",
 			},
-			{
-				Name:       "Born",
-				Location:   "Modesto",
-				SkillGroup: "Beginner+",
-			},
+			nil,
 			{
 				Name:       "William",
 				Location:   "Modesto",
@@ -140,11 +136,7 @@ var currentQueue = []data.GroupInfo{
 				Location:   "Modesto",
 				SkillGroup: "Beginner+",
 			},
-			{
-				Name:       "Rice",
-				Location:   "Modesto",
-				SkillGroup: "Beginner+",
-			},
+			nil,
 			{
 				Name:       "Yonie",
 				Location:   "Modesto",
