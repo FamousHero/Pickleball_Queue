@@ -62,14 +62,9 @@ function setupSignUp(){
 function setupCourts(){
 
     var CourtStartTimes = document.querySelectorAll(".court-info>.start-time>.time")
-    console.log(CourtStartTimes)
     CourtStartTimes.forEach((startTime)=>{
-        console.log(parseStartTime(startTime.innerHTML))
-        let time = new Date(parseStartTime(startTime.innerHTML))
-        console.log("Hello World")
-        console.log(time)
-        let currentTime = new Date()
-        console.log(currentTime)
+        const time = new Date(parseStartTime(startTime.innerHTML))
+        const currentTime = new Date()
         let timeElapsed = currentTime - time // in milliseconds
         timeElapsed /= 1000
         startTime.innerHTML = Math.floor(timeElapsed/60)+"m "+Math.floor(timeElapsed%60)+"s"
@@ -83,18 +78,44 @@ function setupCourts(){
     }, 1000)
 }
 
-// Send notification game is done, update UI to ask "rematch" or "new court"
-function onFinish(){
+// Send notification game is done, update UI to ask "rematch" or "new court" 
+// Prevent default & send request through ajax, done to avoid page reload
+function onFinish(e){
+    e.preventDefault()
+    const rematchBtn = document.getElementById("rematch-btn")
+    const newGameBtn = document.getElementById("new-group-btn")
+
+    rematchBtn.removeAttribute("hidden")
+    newGameBtn.removeAttribute("hidden")
+    e.target.setAttribute("hidden", "")
+}
+
+function onRematch(){
 
 }
-var path = window.location.pathname
+
+function onNewGame(){
+    window.location.replace(window.location.origin)
+}
+function setupPlayingBtns(){
+    const finishBtn = document.getElementById("finish-btn")
+    const rematchBtn = document.getElementById("rematch-btn")
+    const newGameBtn = document.getElementById("new-group-btn")
+
+    finishBtn.addEventListener("click", onFinish)
+
+    newGameBtn.addEventListener("click", onNewGame)
+
+}
+const path = window.location.pathname
 console.log(path)
 switch(true){
     case /^\/$/.test(path):
         setupSignUp()
         break
-    case /^\/queue\/[a-zA-Z\-]+\/?$/.test(path):
     case /^\/playing$/.test(path):
+        setupPlayingBtns()
+    case /^\/queue\/[a-zA-Z\-]+\/?$/.test(path):
         setupCourts()
         break
 }
