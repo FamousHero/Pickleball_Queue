@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"slices"
 
 	"github.com/FamousHero/Pickleball_Queue/data"
 )
@@ -35,36 +36,42 @@ func defaultPostHandler(w http.ResponseWriter, r *http.Request) {
 	// when a form submission is received, parse the data and create
 	// player info from it and add time to localPlayers
 }
+
 func queueHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("calling queueHandler")
-	player := &data.PlayerInfo{
+	p := &data.PlayerInfo{
 		Name:       "Test",
 		Location:   "Modesto",
 		SkillGroup: "Beginner+",
 	}
+
+	ag := data.GroupInfo{
+		Players: [4]*data.PlayerInfo{
+			p,
+			{
+				Name:     "Player2",
+				Location: "Test Local",
+			},
+			{
+				Name:     "Player3",
+				Location: "Test Local",
+			},
+			{
+				Name:     "Player4",
+				Location: "Test Local",
+			},
+		},
+		SkillLevel: "Beginner+",
+	}
+
+	currentQueue = slices.Insert(currentQueue, len(currentQueue)-3, ag)
+
 	renderTemplate(w, "/queue",
 		&data.QueuePageData{
-			Player: *player,
-			AssignedGroup: data.GroupInfo{
-				Players: [4]*data.PlayerInfo{
-					player,
-					{
-						Name:     "Player2",
-						Location: "Test Local",
-					},
-					{
-						Name:     "Player3",
-						Location: "Test Local",
-					},
-					{
-						Name:     "Player4",
-						Location: "Test Local",
-					},
-				},
-				SkillLevel: "Beginner+",
-			},
-			CurrentQueue: currentQueue, // []GroupInfo{},
-			ActiveCourts: activeCourts,
+			Player:        *p,
+			AssignedGroup: ag,
+			CurrentQueue:  currentQueue, // []GroupInfo{},
+			ActiveCourts:  activeCourts,
 		})
 }
 
